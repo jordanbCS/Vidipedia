@@ -18,7 +18,6 @@ https://github.com/jordanbCS/Vidipedia
 
 Joomla with hwdvideoshare plugin.  
 
-
 ## Youtube playlist  
 
 "VidipediaMaybes" - https://www.youtube.com/playlist?list=PLh9Uewtj3bwnhCo31QWjqrHTkoyHydCCI  
@@ -27,7 +26,5 @@ Joomla with hwdvideoshare plugin.
 
 https://www.bitchute.com/vidipedia/  
 
-## Backups  
 
-> lynx --dump "http://pastebin.com/raw/3n2UhZr7" > vidipedia_latest.txt; youtube-dl -ct -i --batch-file='vidipedia_latest.txt'  
 
