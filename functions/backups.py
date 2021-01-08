@@ -24,11 +24,11 @@ ArchiveLocation = \
     "ssh://" + user + "@" + keySubDomain + ".buffer." + API_name + ".io:./buffer"
 
 
+# Videos.sh --[
+
 ## SQL db dump  
 
-
 # run: mysql Vidipedia -B -e "select source from hwdms_media where 1;" | sed "s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" > public_html/archives/hwdms_media.csv
-
 # run: sed -e 's/\"//g' -e 's/source//g' -e '/^\s*$/d' hwdms_media.csv > VideoArchiveBatch1.txt
 
 subprocess.call(["youtube-dl", "-ct", "-i","--batch-file", "VideoArchiveBatch1.txt"])
@@ -39,6 +39,8 @@ VidTable = pd.read_csv('VideoArchiveBatch1.txt', sep=" ", header=None)
 # run: youtube-dl -j --flat-playlist "https://www.youtube.com/playlist?list=PLh9Uewtj3bwnhCo31QWjqrHTkoyHydCCI" | jq -r '.id' | sed 's_^_https://youtu.be/_' > VideoArchiveBatch2.txt 
 subprocess.call(["youtube-dl", "-ct", "-i","--batch-file", "VideoArchiveBatch2.txt"])
 VidTableMaybes = pd.read_csv('VideoArchiveBatch2.txt', sep=" ", header=None)
+
+# ]--
 
 ## Cloud archive  
 
