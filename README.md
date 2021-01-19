@@ -22,9 +22,4 @@ Joomla with hwdvideoshare plugin.
 
 "VidipediaMaybes" - https://www.youtube.com/playlist?list=PLh9Uewtj3bwnhCo31QWjqrHTkoyHydCCI  
 
-## Alt hosting link  
-
-https://www.bitchute.com/vidipedia/  
-
-
 
