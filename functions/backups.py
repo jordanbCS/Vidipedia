@@ -26,10 +26,16 @@ ArchiveLocation = \
 
 # Videos.sh --[
 
+
+
 ## SQL db dump  
 
 # run: mysql Vidipedia -B -e "select source from hwdms_media where 1;" | sed "s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" > public_html/archives/hwdms_media.csv
 # run: sed -e 's/\"//g' -e 's/source//g' -e '/^\s*$/d' hwdms_media.csv > VideoArchiveBatch1.txt
+
+
+# youtube-dl --verbose --ignore-errors --no-continue --no-overwrites --keep-video --no-post-overwrites --download-archive archive.txt --write-description --write-info-json --write-annotations --write-thumbnail --all-subs --output "%(uploader)s (%(uploader_id)s)/%(id)s/%(title)s - %(upload_date)s.%(ext)s" -f bestvideo[ext=mp4]+bestaudio[ext=m4a] -- $1
+subprocess.call(["youtube-dl", "-verbose", "ignore-errors","--batch-file", "VideoArchiveBatch1.txt"])
 
 subprocess.call(["youtube-dl", "-ct", "-i","--batch-file", "VideoArchiveBatch1.txt"])
 VidTable = pd.read_csv('VideoArchiveBatch1.txt', sep=" ", header=None)
@@ -46,4 +52,10 @@ VidTableMaybes = pd.read_csv('VideoArchiveBatch2.txt', sep=" ", header=None)
 
 subprocess.call(["rsync", "-avp", "--progress","--stats", "-e", 
                  "ssh -p 24712", "Vidipedia",  ArchiveLocation])
+
+# aws s3 cp j2Crypt s3://vidipedia/published --storage-class GLACIER
+
+subprocess.call(["aws", "s3", "cp","j2Crypt", "s3://vidipedia/published", 
+                 "--storage-class", "GLACIER"])
+
 
