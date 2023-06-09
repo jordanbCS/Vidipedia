@@ -13,6 +13,10 @@ Founded 2006: https://web.archive.org/web/20061205114704/http://www.vidipedia.or
 
 https://github.com/jordanbCS/Vidipedia  
 
+## Financials  
+
+https://github.com/jordanbCS/Vidipedia/blob/master/Financial.md  
+
 
 ## Backend description  
 
